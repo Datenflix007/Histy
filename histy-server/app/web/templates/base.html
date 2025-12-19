@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>histy</title>
+  <link rel="icon" href="/ressources/icon.jpg" type="image/jpeg" />
+  <style>
+    :root {
+      --bg: #f8f5ef;
+      --ink: #222;
+      --accent: #b14c2c;
+      --muted: #6a5e55;
+      --panel: #fffdfa;
+      --line: #e4d9cf;
+    }
+    body {
+      margin: 0;
+      font-family: "Georgia", "Times New Roman", serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+    header {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header a {
+      color: var(--ink);
+      text-decoration: none;
+      margin-right: 12px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 24px auto;
+      padding: 0 16px 32px;
+    }
+    h1, h2, h3 {
+      margin-top: 0;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin: 8px 0 4px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: #fff;
+    }
+    textarea {
+      min-height: 140px;
+      font-family: "Courier New", monospace;
+    }
+    .btn {
+      display: inline-block;
+      padding: 8px 16px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      margin-top: 12px;
+    }
+    .muted {
+      color: var(--muted);
+      font-size: 0.95em;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      text-align: left;
+      padding: 8px;
+      border-bottom: 1px solid var(--line);
+    }
+    .row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      background: #efe3d9;
+      color: #553c2b;
+      font-size: 0.8em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <img src="/ressources/icon.jpg" alt="histy" style="width: 32px; height: 32px; border-radius: 6px; object-fit: cover;" />
+      <div>
+        <strong>histy</strong>
+        <span class="muted">local citation engine</span>
+      </div>
+    </div>
+    <nav>
+      <a href="/">Dashboard</a>
+      <a href="/sources">Sources</a>
+      <a href="/styles">Styles</a>
+      <a href="/preview">Preview</a>
+    </nav>
+  </header>
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card">
+    <h1>{% if source.id %}Edit Source{% else %}New Source{% endif %}</h1>
+    <form method="post" action="{% if source.id %}/sources/{{ source.id }}{% else %}/sources/new{% endif %}">
+      <label for="type">Type</label>
+      <select id="type" name="source_type">
+        {% set current = source.type or "monograph" %}
+        {% for t in ["monograph", "chapter", "journal_article", "primary_classical", "archive", "web"] %}
+          <option value="{{ t }}" {% if t == current %}selected{% endif %}>{{ t }}</option>
+        {% endfor %}
+      </select>
+      <label for="title">Title</label>
+      <input id="title" name="title" value="{{ source.title or '' }}" required />
+      <label for="short_title">Short title</label>
+      <input id="short_title" name="short_title" value="{{ source.short_title or '' }}" />
+      <label for="year">Year</label>
+      <input id="year" name="year" value="{{ source.year or '' }}" />
+      <label for="place">Place</label>
+      <input id="place" name="place" value="{{ source.place or '' }}" />
+      <label for="publisher">Publisher</label>
+      <input id="publisher" name="publisher" value="{{ source.publisher or '' }}" />
+      <label for="container_title">Container title</label>
+      <input id="container_title" name="container_title" value="{{ source.container_title or '' }}" />
+      <label for="volume">Volume</label>
+      <input id="volume" name="volume" value="{{ source.volume or '' }}" />
+      <label for="issue">Issue</label>
+      <input id="issue" name="issue" value="{{ source.issue or '' }}" />
+      <label for="pages">Pages</label>
+      <input id="pages" name="pages" value="{{ source.pages or '' }}" />
+      <label for="url">URL</label>
+      <input id="url" name="url" value="{{ source.url or '' }}" />
+      <label for="accessed">Accessed</label>
+      <input id="accessed" name="accessed" value="{{ source.accessed or '' }}" />
+      <label for="archive_name">Archive name</label>
+      <input id="archive_name" name="archive_name" value="{{ source.archive_name or '' }}" />
+      <label for="collection">Collection</label>
+      <input id="collection" name="collection" value="{{ source.collection or '' }}" />
+      <label for="signature">Signature</label>
+      <input id="signature" name="signature" value="{{ source.signature or '' }}" />
+      <label for="folio">Folio</label>
+      <input id="folio" name="folio" value="{{ source.folio or '' }}" />
+
+      <h3>Contributor</h3>
+      {% set contributor = source.contributors[0] if source.contributors else {} %}
+      <label for="contributor_name">Name</label>
+      <input id="contributor_name" name="contributor_name" value="{{ contributor.name or '' }}" />
+      <label for="contributor_role">Role</label>
+      <select id="contributor_role" name="contributor_role">
+        {% set role = contributor.role or "author" %}
+        {% for r in ["author", "editor", "translator"] %}
+          <option value="{{ r }}" {% if r == role %}selected{% endif %}>{{ r }}</option>
+        {% endfor %}
+      </select>
+
+      <button class="btn" type="submit">Save</button>
+      <a class="btn" href="/sources">Back</a>
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card">
+    <h1>Styles</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Version</th>
+          <th>Built-in</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for style in items %}
+          <tr>
+            <td><a href="/styles/{{ style.id }}">{{ style.name }}</a></td>
+            <td>{{ style.version }}</td>
+            <td>{% if style.built_in %}<span class="tag">seeded</span>{% endif %}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

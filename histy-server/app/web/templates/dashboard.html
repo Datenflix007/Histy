@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card">
+    <h1>Welcome to histy</h1>
+    <p class="muted">Your local, deterministic citation buddy for Word. Pick a tool below.</p>
+    <div class="row">
+      <div class="card">
+        <h3>Sources</h3>
+        <p>Search and edit your source library.</p>
+        <a class="btn" href="/sources">Open Sources</a>
+      </div>
+      <div class="card">
+        <h3>Styles</h3>
+        <p>Review seeded style packages and templates.</p>
+        <a class="btn" href="/styles">Open Styles</a>
+      </div>
+      <div class="card">
+        <h3>Preview</h3>
+        <p>Preview a citation with any style.</p>
+        <a class="btn" href="/preview">Open Preview</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

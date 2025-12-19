@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card">
+    <h1>Edit templates: {{ style.name }}</h1>
+    <form method="post" action="/styles/{{ style.id }}/edit-templates">
+      {% for key, markdown in style.templates.items() %}
+        <label for="tpl_{{ key }}">{{ key }}</label>
+        <textarea id="tpl_{{ key }}" name="tpl_{{ key }}">{{ markdown }}</textarea>
+      {% endfor %}
+      <button class="btn" type="submit">Save templates</button>
+      <a class="btn" href="/styles/{{ style.id }}">Back</a>
+    </form>
+  </div>
+{% endblock %}

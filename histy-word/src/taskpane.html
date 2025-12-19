@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>histy Word</title>
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <script src="api.js"></script>
+  <script src="wordTokens.js"></script>
+  <script src="taskpane.js"></script>
+  <style>
+    body {
+      font-family: "Verdana", "Geneva", sans-serif;
+      margin: 12px;
+      color: #1b1b1b;
+    }
+    h1 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+    label {
+      display: block;
+      margin: 10px 0 4px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 6px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 8px;
+      padding: 6px 10px;
+      border: none;
+      background: #b14c2c;
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .results {
+      margin-top: 12px;
+      border-top: 1px solid #ddd;
+      padding-top: 8px;
+    }
+    .result-item {
+      padding: 6px;
+      border-bottom: 1px solid #eee;
+    }
+    .muted {
+      color: #666;
+      font-size: 12px;
+    }
+    .status {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>histy</h1>
+
+  <div>
+    <label for="serverUrl">Server URL</label>
+    <div class="row">
+      <input id="serverUrl" type="text" />
+      <button id="checkConnection">Check</button>
+    </div>
+    <div class="muted">Default: http://localhost:8000</div>
+  </div>
+
+  <div>
+    <label>Status</label>
+    <div id="status" class="status">Not connected</div>
+  </div>
+
+  <div>
+    <label for="searchBox">Search sources</label>
+    <input id="searchBox" type="text" placeholder="Type a title" />
+    <button id="searchButton">Search</button>
+  </div>
+
+  <div>
+    <label for="locatorInput">Locator</label>
+    <input id="locatorInput" type="text" placeholder="e.g. 12" />
+  </div>
+
+  <div class="results" id="results"></div>
+
+  <div>
+    <button id="refreshButton">Refresh all citations</button>
+    <button id="bibliographyButton">Generate bibliography</button>
+    <button id="sourcesButton">Generate sources list</button>
+  </div>
+</body>
+</html>

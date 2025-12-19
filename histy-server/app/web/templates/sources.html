@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card">
+    <h1>Sources</h1>
+    <form method="get" action="/sources">
+      <label for="q">Search</label>
+      <input id="q" name="q" value="{{ q }}" placeholder="Search by title" />
+      <button class="btn" type="submit">Search</button>
+      <a class="btn" href="/sources/new">New Source</a>
+    </form>
+  </div>
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Type</th>
+          <th>Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %}
+          <tr>
+            <td><a href="/sources/{{ item.id }}">{{ item.title }}</a></td>
+            <td>{{ item.type }}</td>
+            <td>{{ item.year }}</td>
+          </tr>
+        {% else %}
+          <tr>
+            <td colspan="3" class="muted">No sources yet. Try a search or add a new source.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

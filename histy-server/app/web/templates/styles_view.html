@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card">
+    <h1>{{ style.name }}</h1>
+    <p class="muted">Version {{ style.version }}. {{ style.description }}</p>
+    <a class="btn" href="/styles/{{ style.id }}/edit-templates">Edit templates</a>
+  </div>
+  <div class="card">
+    <h2>Rules</h2>
+    <pre>{{ style.rules | tojson(indent=2) }}</pre>
+  </div>
+  <div class="card">
+    <h2>Templates</h2>
+    {% for key, markdown in style.templates.items() %}
+      <h3>{{ key }}</h3>
+      <pre>{{ markdown }}</pre>
+    {% endfor %}
+  </div>
+  <div class="card">
+    <h2>Abbreviations</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Key</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for key, value in style.abbreviations.items() %}
+          <tr>
+            <td>{{ key }}</td>
+            <td>{{ value }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

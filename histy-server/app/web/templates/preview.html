@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card">
+    <h1>Preview</h1>
+    <form method="post" action="/preview">
+      <label for="source">Source</label>
+      <select id="source" name="source_id">
+        {% for source in sources %}
+          <option value="{{ source.id }}" {% if source.id == selected_source_id %}selected{% endif %}>{{ source.title }}</option>
+        {% endfor %}
+      </select>
+      <label for="style">Style</label>
+      <select id="style" name="style_id">
+        {% for style in styles %}
+          <option value="{{ style.id }}" {% if style.id == selected_style_id %}selected{% endif %}>{{ style.name }}</option>
+        {% endfor %}
+      </select>
+      <label for="locator">Locator</label>
+      <input id="locator" name="locator" value="{{ locator or '' }}" placeholder="e.g. 12" />
+      <button class="btn" type="submit">Render</button>
+    </form>
+  </div>
+  {% if output %}
+    <div class="card">
+      <h2>Result</h2>
+      <p>{{ output.plain_text }}</p>
+      <pre>{{ output.metadata | tojson(indent=2) }}</pre>
+    </div>
+  {% endif %}
+{% endblock %}
